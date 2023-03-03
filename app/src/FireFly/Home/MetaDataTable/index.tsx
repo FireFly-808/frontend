@@ -278,7 +278,8 @@ export const MetaDataTable:FC<Props> = ({style}) => {
                 <div style={{
                     display: 'flex',
                     alignItems: 'center',
-                    marginBottom: '15px'
+                    marginBottom: '15px',
+                    height: '30px'
                 }}
                 >
                     {hotSpot?.is_hotspot &&
@@ -286,6 +287,8 @@ export const MetaDataTable:FC<Props> = ({style}) => {
                             marginLeft: 'auto',
                             marginRight: '10px',
                             background: 'rgb(49,52,55)',
+                            height: '100%',
+                            // width: '30%',
                             border: 0,
                             borderRadius: '45px',
                             color: '#b8b7ad',
