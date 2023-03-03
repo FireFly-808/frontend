@@ -13,8 +13,9 @@ export interface HotSpot {
     path_id: number,
     record_id: number,
     date: string,
-    ir_image_path: string,
-    rgb_image_path: string,
+    ir_image_url: string,
+    rgb_image_url: string,
+    masked_image_url: string,
     is_hotspot: boolean,
     status: Status
 }
@@ -47,9 +48,11 @@ export function isHotSpot(obj: unknown): obj is HotSpot {
         &&
         (typeof typedObj.date === 'string')
         &&
-        (typeof typedObj.ir_image_path === 'string')
+        (typeof typedObj.ir_image_url === 'string')
         &&
-        (typeof typedObj.rgb_image_path === 'string')
+        (typeof typedObj.rgb_image_url === 'string')
+        &&
+        (typeof typedObj.masked_image_url === 'string')
         && 
         (typeof typedObj.is_hotspot === 'boolean')
         &&

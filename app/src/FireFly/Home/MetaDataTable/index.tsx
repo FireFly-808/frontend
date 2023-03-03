@@ -50,7 +50,7 @@ interface MetaDataInfo {
     date: string,
     status:Status,
     rgbPhoto: string | null,
-    paintedRGB: string | null,
+    maskedRGB: string | null,
     irPhoto:string | null
 }
 
@@ -59,7 +59,7 @@ const defaultInfo:MetaDataInfo = {
     date: "",
     status: Status.Undefined,
     rgbPhoto: null,
-    paintedRGB: null,
+    maskedRGB: null,
     irPhoto: null,
 }
 
@@ -68,7 +68,7 @@ export const MetaDataTable:FC<Props> = ({style}) => {
     // States & hooks for setting the metadata information based on selected hotspot
     const {setNoMetaData, hotSpot} = useContext(DataProvider);
     const [metaDataInfo, setMetaDataInfo] = useState<MetaDataInfo>(defaultInfo)
-    const [isPaintedRGB, showPaintedRGB] = useState<boolean>(false);
+    const [ismaskedRGB, showmaskedRGB] = useState<boolean>(false);
     const [statusFormVal, setstatusFormVal] = useState<Status>(Status.Undefined)
     const [error, setError] = useState<string>("");
     const [toggleText, setToggleText] = useState<string>("Show Detection Overlay");
@@ -80,9 +80,9 @@ export const MetaDataTable:FC<Props> = ({style}) => {
                 date: hotSpot.date,
                 location: `${hotSpot.lat.toFixed(4)}°, ${hotSpot.lng.toFixed(4)}°`,
                 status: hotSpot.status,
-                rgbPhoto: `http://127.0.0.1:8000${hotSpot.rgb_image_path}`,
-                irPhoto: `http://127.0.0.1:8000${hotSpot.ir_image_path}`,
-                paintedRGB: "picture1.png"
+                rgbPhoto: `http://127.0.0.1:8000${hotSpot.rgb_image_url}`,
+                irPhoto: `http://127.0.0.1:8000${hotSpot.ir_image_url}`,
+                maskedRGB: `http://127.0.0.1:8000${hotSpot.masked_image_url}`,
             }
             setMetaDataInfo(newMetaData);
         } else {
@@ -131,12 +131,12 @@ export const MetaDataTable:FC<Props> = ({style}) => {
     }
 
     const handleToggle = () => {
-        if (isPaintedRGB) {
+        if (ismaskedRGB) {
             setToggleText("Show Detection Overlay");
-            showPaintedRGB(false);
+            showmaskedRGB(false);
         } else {
             setToggleText("Show raw RGB");
-            showPaintedRGB(true);
+            showmaskedRGB(true);
         }
     }
 
@@ -281,33 +281,35 @@ export const MetaDataTable:FC<Props> = ({style}) => {
                     marginBottom: '15px'
                 }}
                 >
-                    <button style={{
-                        marginLeft: 'auto',
-                        marginRight: '10px',
-                        background: 'rgb(49,52,55)',
-                        border: 0,
-                        borderRadius: '45px',
-                        color: '#b8b7ad',
-                        cursor: 'pointer',
-                        fontSize: "100px !important",
-                    }}
-                    onClick={handleToggle}
-                    >
-                        {toggleText}
-                    </button>
+                    {hotSpot?.is_hotspot &&
+                        <button style={{
+                            marginLeft: 'auto',
+                            marginRight: '10px',
+                            background: 'rgb(49,52,55)',
+                            border: 0,
+                            borderRadius: '45px',
+                            color: '#b8b7ad',
+                            cursor: 'pointer',
+                            fontSize: "100px !important",
+                        }}
+                        onClick={handleToggle}
+                        >
+                            {toggleText}
+                        </button>
+                    }
                 </div>
                 <div 
                     style={{
                     ...elementStyle
                     }}
                 >
-                    {(metaDataInfo.rgbPhoto !== null && metaDataInfo.paintedRGB !== null) &&
+                    {(metaDataInfo.rgbPhoto !== null && metaDataInfo.maskedRGB !== null) &&
                         <img 
                             style={{
                                 width: '75%',
                                 height: '75%',
                             }} 
-                            src={isPaintedRGB ? metaDataInfo.paintedRGB : metaDataInfo.rgbPhoto} alt=''
+                            src={ismaskedRGB ? metaDataInfo.maskedRGB : metaDataInfo.rgbPhoto} alt=''
                         />
                     }
                 </div>
