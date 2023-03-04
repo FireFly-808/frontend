@@ -16,5 +16,9 @@ WORKDIR /app
 EXPOSE 8000
 
 #RUN
+
+
+
+
 # ENV PATH="/py/bin:$PATH"
 
