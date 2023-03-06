@@ -4,7 +4,7 @@ import {DataProvider} from '../DataProvider';
 import GoogleMapReact from 'google-map-react';
 import {Marker} from './Marker';
 import RefreshIcon from '@mui/icons-material/Refresh';
-import {isHotSpotArray} from '../../Common/types';
+import {isHotSpotArray, SERVER} from '../../Common/types';
 import {changeColor} from '../../Common/button';
 
 const area = {
@@ -43,7 +43,7 @@ export const HotSpotMap:FC<Props> = ({style}) => {
         lat: 43.70954790,
         lng: -79.45999730
         },
-        zoom: 13
+        zoom: 15
     };
 
     // If path is selected, center google maps around the first hotspot
@@ -53,14 +53,14 @@ export const HotSpotMap:FC<Props> = ({style}) => {
             lat: pathHotSpots[0].lat,
             lng: pathHotSpots[0].lng
             },
-            zoom: 13
+            zoom: 16
         };    
     }
 
     // Get request to get all new hotspot data
     const getPathHotSpots = async () => {
         if (pathID !== null) {
-            const endpoint = `http://127.0.0.1:8000/api/server/get_locations_data_by_path/?path_id=${pathID}`
+            const endpoint = `${SERVER}/api/server/get_locations_data_by_path/?path_id=${pathID}`
             const data = await(await fetch(endpoint)).json()
             
             // Use typeguard to check if data is a valid response

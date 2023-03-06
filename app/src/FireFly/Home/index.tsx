@@ -1,7 +1,7 @@
 import {FC, useState, useEffect} from 'react';
 import {Props} from '../Common/styles';
 import {DataProvider} from './DataProvider';
-import {Path, HotSpot, isPathArray} from '../Common/types'
+import {Path, HotSpot, isPathArray, SERVER} from '../Common/types'
 import {FireData} from './FireData';
 
 export const Home:FC<Props> = ({style}) => {
@@ -23,7 +23,7 @@ export const Home:FC<Props> = ({style}) => {
     // GET REQUEST: to get paths from the server
     useEffect(() => {
         const getPaths = async () => {
-            const endpoint = 'http://127.0.0.1:8000/api/server/paths/';
+            const endpoint = SERVER+'/api/server/paths/';
             const data = await(await fetch(endpoint)).json();
 
             if (isPathArray(data)) {

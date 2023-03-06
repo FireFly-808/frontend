@@ -81,3 +81,6 @@ export function isPath(obj: unknown): obj is Path {
 export function isPathArray(obj: unknown): obj is Path[] {
     return Array.isArray(obj) && obj.every(e => isPath(e));
 }
+
+// export const SERVER = "127.0.0.1"
+export const SERVER = "http://ec2-3-219-240-142.compute-1.amazonaws.com"
