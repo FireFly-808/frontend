@@ -83,5 +83,5 @@ export function isPathArray(obj: unknown): obj is Path[] {
 }
 
 // export const SERVER = "127.0.0.1"
-export const SERVER = "http://ec2-3-219-240-142.compute-1.amazonaws.com"
+export const SERVER = "http://ec2-44-214-38-103.compute-1.amazonaws.com"
 // export const SERVER = process.env["SERVER_URL"];
