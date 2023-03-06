@@ -26,7 +26,8 @@ const MDTable:React.CSSProperties = {
     ...gridstyle,
     borderRight: '7px solid black',
     borderRadius: '25px',
-    padding: '5px',
+    paddingRight: '3%',
+    paddingLeft: '3%',
     gridTemplate: `
     " .                ${area.closeButton}     ${area.closeButton} " 0.10fr
     " ${area.location} ${area.locationVal}     ${area.locationVal} " 0.10fr
@@ -35,14 +36,22 @@ const MDTable:React.CSSProperties = {
     " .                ${area.setStatusModal}  ${area.confirm}     " 40px
     " .                .                       ${area.error}       " 40px
     " ${area.photos}   ${area.photos}          ${area.photos}      " auto
-    / 0.5fr            0.25fr                  0.25fr              `
+    / auto             auto                    auto             `
 }
 
 const textStyle: React.CSSProperties = {
     display: 'flex',
     justifyContent: 'end',
-    alignItems: 'center'
-    
+    alignItems: 'center',
+    fontFamily: 'Golos Text, sans-serif',
+}
+
+const headerStyle: React.CSSProperties = {
+    display: 'flex',
+    justifyContent: 'start',
+    alignItems: 'center',
+    fontSize: '1.75em',
+    fontWeight: 'bold',
 }
 
 interface MetaDataInfo {
@@ -170,7 +179,7 @@ export const MetaDataTable:FC<Props> = ({style}) => {
                     <CloseIcon/>
                 </button>
             </div>
-            <h2 style={{gridArea: area.location}}>
+            <h2 style={{gridArea: area.location, ...headerStyle}}>
                 {"Geolocation: "}
             </h2>
 
@@ -179,7 +188,7 @@ export const MetaDataTable:FC<Props> = ({style}) => {
                 {metaDataInfo.location}
             </h3>
 
-            <h2 style={{gridArea: area.date}}>
+            <h2 style={{gridArea: area.date, ...headerStyle}}>
                 {"Date: "}
             </h2>
 
@@ -187,7 +196,7 @@ export const MetaDataTable:FC<Props> = ({style}) => {
                 {metaDataInfo.date}
             </h3>
             
-            <h2 style={{gridArea: area.status}}>
+            <h2 style={{gridArea: area.status, ...headerStyle}}>
                 {"Status: "}
             </h2>
 
@@ -209,10 +218,10 @@ export const MetaDataTable:FC<Props> = ({style}) => {
                         height: '100%',
                         background: 'rgb(49,52,55)',
                         border: 'none',
-                        fontWeight: '500',
                         borderRadius: '45px',
                         margin: 4,
                         textAlign: 'center',
+                        fontSize: 'medium',
                         color: '#b8b7ad',
                         cursor: 'pointer',
                         boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.1)'
@@ -243,6 +252,7 @@ export const MetaDataTable:FC<Props> = ({style}) => {
                         background: 'rgb(49,52,55)',
                         border: 0,
                         borderRadius: '45px',
+                        fontSize: 'medium',
                         margin: 4,
                         color: '#b8b7ad',
                         cursor: 'pointer'
@@ -271,14 +281,17 @@ export const MetaDataTable:FC<Props> = ({style}) => {
                 }}
             >
                 <h2 style={{
-                    marginBlockEnd: '0px'
+                    marginBlockEnd: '0px',
+                    ...headerStyle
                 }}>
                     RGB Photo:
                 </h2>
                 <div style={{
                     display: 'flex',
                     alignItems: 'center',
-                    marginBottom: '15px',
+                    justifyContent: 'center',
+                    // marginBottom: '15px',
+                    boxSizing: 'border-box',
                     height: '30px'
                 }}
                 >
@@ -286,14 +299,16 @@ export const MetaDataTable:FC<Props> = ({style}) => {
                         <button style={{
                             marginLeft: 'auto',
                             marginRight: '10px',
+                            padding: '5px',
                             background: 'rgb(49,52,55)',
                             height: '100%',
-                            // width: '30%',
+                            width: '40%',
+                            fontSize: 'medium',
+                            textAlign: 'center',
                             border: 0,
                             borderRadius: '45px',
                             color: '#b8b7ad',
                             cursor: 'pointer',
-                            fontSize: "100px !important",
                         }}
                         onClick={handleToggle}
                         >
@@ -316,10 +331,10 @@ export const MetaDataTable:FC<Props> = ({style}) => {
                         />
                     }
                 </div>
-                <h2>IR Photo:</h2>
+                <h2 style={{...headerStyle}}>IR Photo:</h2>
                 <div 
                     style={{
-                    ...elementStyle
+                    ...elementStyle,
                     }}
                 >
                     {metaDataInfo.irPhoto !== null &&

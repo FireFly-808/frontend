@@ -6,7 +6,7 @@ import {FireData} from './FireData';
 
 export const Home:FC<Props> = ({style}) => {
 
-    const [noMetaData, setNoMetaData] = useState<boolean>(true);
+    const [noMetaData, setNoMetaData] = useState<boolean>(false);
     const [pathHotSpots, setPathHotSpots] = useState<HotSpot[] | null>(null);
     const [hotSpot, setHotSpot] = useState<HotSpot | null>(null);
     const defpaths: Path[] = [

@@ -15,7 +15,6 @@ const area = {
 
 const MapStyle:React.CSSProperties = {
     ...gridstyle,
-    margin: '7px',
     gridTemplate: `
     " .           ${area.pathSelection} ${area.refreshButton}  " 0.05fr
     " ${area.map} ${area.map}           ${area.map}           " auto
@@ -122,7 +121,7 @@ export const HotSpotMap:FC<Props> = ({style}) => {
                 }}
             >
                 <button style={{
-                    fontSize: "100px !important",
+                    fontSize: "large",
                     background: 'transparent',
                     border: 0,
                     padding: 0,
@@ -150,6 +149,8 @@ export const HotSpotMap:FC<Props> = ({style}) => {
                     cursor: 'pointer',
                     border: 0,
                     textAlign: 'center',
+                    fontSize: 'medium',
+                    fontFamily: 'Golos Text, sans-serif',
                     width: '80%',
                     height: '90%',
                     boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.1)'

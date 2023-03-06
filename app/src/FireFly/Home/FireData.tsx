@@ -32,8 +32,8 @@ export const FireData:FC<Props> = ({style}) => {
                 ...style,
                 ...metaDataStyle,
             }}>
-                <MetaDataTable style={{gridArea: area.metadata}}/>
-                <HotSpotMap style={{gridArea: area.map}} />
+                <MetaDataTable style={{boxSizing:'border-box', gridArea: area.metadata}}/>
+                <HotSpotMap style={{boxSizing:'border-box', gridArea: area.map}} />
             </div>
         }
         {noMetaData && 
@@ -42,7 +42,7 @@ export const FireData:FC<Props> = ({style}) => {
                 ...defaultStyle,
                 
             }}>
-                <HotSpotMap style={{gridArea: area.map}} />
+                <HotSpotMap style={{boxSizing:'border-box', gridArea: area.map}} />
             </div>
         }
         </>

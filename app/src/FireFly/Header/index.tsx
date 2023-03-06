@@ -31,9 +31,11 @@ export const Header: FC<Props> = ({style}) => {
             <MainMenu style={{gridArea:area.menu}} navlinks={navLinks}></MainMenu>
             <h1 style={{
                 ...elementStyle,
+                fontWeight: '700',
+                fontFamily: 'Montserrat Alternates, sans-serif',
                 gridArea: area.title}}
             >
-                FireFly
+                firefly
             </h1>
             <div
                 style={{

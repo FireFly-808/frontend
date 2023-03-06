@@ -14,5 +14,6 @@ export const gridstyle:React.CSSProperties = {
 export const elementStyle:React.CSSProperties = {
     alignItems: 'center',
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    boxSizing: 'border-box'
 }
