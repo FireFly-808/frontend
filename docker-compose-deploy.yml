@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  frontend_app:
+    build:
+      context: .
+    ports:
+      - 80:3000
+    restart: always
+    volumes:
+      - ./app:/app
+    environment:
+      - REACT_APP_MAPS_KEY=${REACT_APP_MAPS_KEY}
+      - SERVER_URL=${SERVER_URL}
+    command: >
+      sh -c "npm install &&
+             npm start"
