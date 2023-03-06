@@ -3,7 +3,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 import {gridstyle, elementStyle, Props} from '../../Common/styles';
 import {changeColor, changeBackground} from '../../Common/button';
-import {Status} from '../../Common/types';
+import {Status, SERVER} from '../../Common/types';
 import {DataProvider} from '../DataProvider';
 
 const area = {
@@ -80,9 +80,9 @@ export const MetaDataTable:FC<Props> = ({style}) => {
                 date: hotSpot.date,
                 location: `${hotSpot.lat.toFixed(4)}°, ${hotSpot.lng.toFixed(4)}°`,
                 status: hotSpot.status,
-                rgbPhoto: `http://127.0.0.1:8000${hotSpot.rgb_image_url}`,
-                irPhoto: `http://127.0.0.1:8000${hotSpot.ir_image_url}`,
-                maskedRGB: `http://127.0.0.1:8000${hotSpot.masked_image_url}`,
+                rgbPhoto: `${SERVER}${hotSpot.rgb_image_url}`,
+                irPhoto: `${SERVER}${hotSpot.ir_image_url}`,
+                maskedRGB: `${SERVER}${hotSpot.masked_image_url}`,
             }
             setMetaDataInfo(newMetaData);
         } else {
@@ -100,7 +100,7 @@ export const MetaDataTable:FC<Props> = ({style}) => {
     const submitStatus = () => {
         const setHotSpotStatus = async () => {
             const id = hotSpot !== null ? hotSpot.record_id : -1;
-            const endpoint = `http://127.0.0.1:8000/api/server/records/${id}/update_status/`;
+            const endpoint = `${SERVER}/api/server/records/${id}/update_status/`;
             const res = await fetch(endpoint, {
                 method: 'POST',
                 headers: {
