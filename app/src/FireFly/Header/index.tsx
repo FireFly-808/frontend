@@ -35,7 +35,7 @@ export const Header: FC<Props> = ({style}) => {
                 fontFamily: 'Montserrat Alternates, sans-serif',
                 gridArea: area.title}}
             >
-                firefly
+                FireFly
             </h1>
             <div
                 style={{
