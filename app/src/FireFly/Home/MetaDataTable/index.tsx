@@ -36,7 +36,7 @@ const MDTable:React.CSSProperties = {
     " .                ${area.setStatusModal}  ${area.confirm}     " 40px
     " .                .                       ${area.error}       " 40px
     " ${area.photos}   ${area.photos}          ${area.photos}      " auto
-    / auto             auto                    auto             `
+    / auto             0.5fr                   0.5fr             `
 }
 
 const textStyle: React.CSSProperties = {
@@ -44,6 +44,8 @@ const textStyle: React.CSSProperties = {
     justifyContent: 'end',
     alignItems: 'center',
     fontFamily: 'Golos Text, sans-serif',
+    minHeight: 0,
+    minWidth: 0,
 }
 
 const headerStyle: React.CSSProperties = {
@@ -163,6 +165,7 @@ export const MetaDataTable:FC<Props> = ({style}) => {
                     justifyContent: 'end',
                     alignContent: 'center',
                     padding: '5px',
+                    paddingTop: '10px'
                 }}
             >
                 <button style={{
@@ -210,6 +213,8 @@ export const MetaDataTable:FC<Props> = ({style}) => {
                     display: 'flex',
                     justifyContent: 'end',
                     alignItems: 'center',
+                    minHeight: 0,
+                    minWidth: 0,
                 }}
             >
                 <select 
@@ -243,6 +248,8 @@ export const MetaDataTable:FC<Props> = ({style}) => {
                     display: 'flex',
                     justifyContent: 'end',
                     alignItems: 'center',
+                    minHeight: 0,
+                    minWidth: 0,
                 }}
             >
                 <button 
@@ -290,7 +297,7 @@ export const MetaDataTable:FC<Props> = ({style}) => {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    // marginBottom: '15px',
+                    marginBottom: '15px',
                     boxSizing: 'border-box',
                     height: '30px'
                 }}
@@ -299,16 +306,17 @@ export const MetaDataTable:FC<Props> = ({style}) => {
                         <button style={{
                             marginLeft: 'auto',
                             marginRight: '10px',
-                            padding: '5px',
                             background: 'rgb(49,52,55)',
                             height: '100%',
-                            width: '40%',
+                            width: 'auto',
                             fontSize: 'medium',
                             textAlign: 'center',
                             border: 0,
                             borderRadius: '45px',
                             color: '#b8b7ad',
                             cursor: 'pointer',
+                            minHeight: 0,
+                            minWidth: 0,
                         }}
                         onClick={handleToggle}
                         >

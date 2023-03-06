@@ -19,6 +19,7 @@ const style:React.CSSProperties = {
     padding: 0,
     border: 0,
     background: '#282828',
+    overflowX: 'hidden',
     color: '#b8b7ad',
     fontFamily: 'Golos Text, sans-serif',
     gridTemplate: `

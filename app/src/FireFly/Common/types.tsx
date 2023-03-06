@@ -26,7 +26,7 @@ export interface Path {
 }
 
 // Generic function to check if obj is the enum type T
-export function isEnum<T extends { [k: string]: string }>(enumType: T, obj: any): obj is T[keyof T] {
+export function isEnum<T extends { [k: string]: string }>(enumType:T, obj: any): obj is T[keyof T] {
     return Object.values(enumType).includes(obj as T[keyof T]);
 }
 
@@ -37,13 +37,13 @@ export function isHotSpot(obj: unknown): obj is HotSpot {
         (typeof typedObj === 'object' && typedObj !== null)
         &&
         (typeof typedObj.loc_id === 'number')
-        &&
+        && 
         (typeof typedObj.lat === 'number')
         &&
         (typeof typedObj.lng === 'number')
         &&
         (typeof typedObj.path_id === 'number')
-        &&
+        && 
         (typeof typedObj.record_id === 'number')
         &&
         (typeof typedObj.date === 'string')
@@ -53,7 +53,7 @@ export function isHotSpot(obj: unknown): obj is HotSpot {
         (typeof typedObj.rgb_image_url === 'string')
         &&
         (typeof typedObj.masked_image_url === 'string')
-        &&
+        && 
         (typeof typedObj.is_hotspot === 'boolean')
         &&
         (isEnum(Status, typedObj.status))
@@ -83,5 +83,5 @@ export function isPathArray(obj: unknown): obj is Path[] {
 }
 
 // export const SERVER = "127.0.0.1"
-export const SERVER = "http://ec2-44-214-38-103.compute-1.amazonaws.com"
+export const SERVER = "http://ec2-3-219-240-142.compute-1.amazonaws.com"
 // export const SERVER = process.env["SERVER_URL"];
